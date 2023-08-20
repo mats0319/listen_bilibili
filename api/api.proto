@@ -1,0 +1,47 @@
+syntax = "proto3";
+package api;
+
+option go_package = "./api";
+option optimize_for = LITE_RUNTIME;
+
+service IApi {
+  rpc GetList(GetListReq) returns (GetListRes);
+  rpc GetOriginURL(GetOriginURLReq) returns (GetOriginURLRes);
+}
+
+message GetListReq {
+}
+
+message GetListRes {
+  List list = 1;
+  string err = 15;
+}
+
+message GetOriginURLReq {
+  string music_id = 1;
+}
+
+message GetOriginURLRes {
+  string url = 1;
+  string err = 15;
+}
+
+message List {
+  string id = 1;
+  string name = 2;
+  string author = 3;
+  repeated Playlist playlists = 4;
+}
+
+message Playlist {
+  string id = 1;
+  string name = 2;
+  repeated Music music_list = 3;
+}
+
+message Music {
+  string id = 1;
+  string name = 2;
+  string bv = 3;
+  int32 volume = 4;
+}

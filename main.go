@@ -1,26 +1,109 @@
 package main
 
 import (
+	"encoding/json"
+	"github.com/mats9693/listenBilibili/api/go"
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 )
 
-func main() {
-	url := getVideoURL("https://m.bilibili.com/video/BV1nk4y1P79g?p=22")
-	log.Println("> url: ", url)
+var list = &api.List{}
 
-	//err := http.ListenAndServe("0.0.0.0:9693", nil)
-	//if err != nil {
-	//	log.Println("listen and serve failed, err:", err)
-	//}
+func main() {
+	listBytes, err := os.ReadFile("./listen_bilibili.json")
+	if err != nil {
+		log.Println("read file failed, err: ", err)
+		return
+	}
+
+	err = json.Unmarshal(listBytes, list)
+	if err != nil {
+		log.Println("deserialize list failed, err: ", err)
+	}
+
+	http.HandleFunc("/getList", onGetList)
+	http.HandleFunc("/getOriginURL", onGetOriginURL)
+	err = http.ListenAndServe("0.0.0.0:9693", nil)
+	if err != nil {
+		log.Println("listen and serve failed, err:", err)
+	}
 }
 
-func getVideoURL(url string) string {
+// onGetList return List
+func onGetList(w http.ResponseWriter, _ *http.Request) {
+	res := &api.GetListRes{}
+
+	listBytes, err := json.Marshal(list)
+	if err != nil {
+		log.Println("json marshal failed, err:", err)
+		res.Err = err.Error()
+	}
+
+	res.List = string(listBytes)
+
+	resBytes, err := json.Marshal(res)
+	if err != nil {
+		log.Println("json marshal failed, err:", err)
+	}
+
+	_, err = w.Write(resBytes)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+// onGetOriginURL according to 'music id', match 'bv' and use 'bv' to get 'origin address'
+func onGetOriginURL(w http.ResponseWriter, req *http.Request) {
+	musicID := req.PostFormValue("music_id")
+
+	bv := getBv(musicID)
+	url := getOriginURL(bv)
+
+	res := &api.GetOriginURLRes{URL: url}
+
+	if len(bv) < 1 || len(url) < 1 {
+		res.Err = "runs error"
+	}
+
+	resBytes, err := json.Marshal(res)
+	if err != nil {
+		log.Println("json marshal failed, err:", err)
+	}
+
+	_, err = w.Write(resBytes)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+// getBv match 'bv' according 'music id', return empty string if not matched
+func getBv(musicID string) string {
+	bv := ""
+
+ALL:
+	for i := range list.Playlists {
+		playlistItem := list.Playlists[i]
+
+		for j := range playlistItem.MusicList {
+			musicItem := playlistItem.MusicList[j]
+
+			if musicItem.ID == musicID {
+				bv = musicItem.Bv
+				break ALL
+			}
+		}
+	}
+
+	return bv
+}
+
+func getOriginURL(bv string) string {
 	client := &http.Client{}
 
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", bv, nil)
 	if err != nil {
 		log.Println("create new request failed, err:", err)
 		return ""

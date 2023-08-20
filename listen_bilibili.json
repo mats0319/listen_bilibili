@@ -1,0 +1,31 @@
+{
+  "id": "0773e705-5b41-44e4-9f3a-3e2e1c583e5d",
+  "name": "歌单",
+  "author": "mario",
+  "playlists": [
+    {
+      "id": "10dfa469-e91e-4a4d-aaee-31202bba7fcb",
+      "name": "古风",
+      "musicList": [
+        {
+          "id": "77885ca7-7af6-4823-9e90-7ff075fdbd48",
+          "name": "春三月",
+          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=22",
+          "volume": 0
+        },
+        {
+          "id": "bfb375ea-f10e-432d-8d9d-a28dd6098348",
+          "name": "风过谢桃花",
+          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=30",
+          "volume": 0
+        },
+        {
+          "id": "32474451-171d-4d56-b1f5-794d4b0b9fc9",
+          "name": "盗墓笔记-十年人间",
+          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=6",
+          "volume": 0
+        }
+      ]
+    }
+  ]
+}
