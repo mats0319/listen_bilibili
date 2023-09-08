@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/getList", listen_bilibili.OnGetList)
-	http.HandleFunc("/getOriginURL", listen_bilibili.OnGetOriginURL)
+	http.HandleFunc("/list/get", listen_bilibili.OnGetList)
+	http.HandleFunc("/originURL/get", listen_bilibili.OnGetOriginURL)
 
 	err := http.ListenAndServe("0.0.0.0:9693", nil)
 	if err != nil {

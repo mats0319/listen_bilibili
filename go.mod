@@ -1,6 +1,6 @@
 module github.com/mats9693/listenBilibili
 
-go 1.20
+go 1.21
 
 require (
 	google.golang.org/grpc v1.57.0

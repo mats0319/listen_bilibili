@@ -10,5 +10,13 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="less">
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
 </style>

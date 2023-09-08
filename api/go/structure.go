@@ -1,31 +1,31 @@
 package api
 
 type List struct {
-	ID        string
-	Name      string
-	Author    string
-	Playlists []Playlist
+	ID        string     `json:"id"`
+	Name      string     `json:"name"`
+	Author    string     `json:"author"`
+	Playlists []Playlist `json:"playlists"`
 }
 
 type Playlist struct {
-	ID        string
-	Name      string
-	MusicList []Music
+	ID        string  `json:"id"`
+	Name      string  `json:"name"`
+	MusicList []Music `json:"musicList"`
 }
 
 type Music struct {
-	ID     string
-	Name   string
-	Bv     string
-	volume int32
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Bv     string `json:"bv"`
+	Volume int32  `json:"volume"`
 }
 
 type GetListRes struct {
-	List string
-	Err  string
+	List string `json:"list"`
+	Err  string `json:"err"`
 }
 
 type GetOriginURLRes struct {
-	URL string
-	Err string
+	URL string `json:"url"`
+	Err string `json:"err"`
 }

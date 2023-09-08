@@ -16,6 +16,8 @@ const (
 
 // OnGetList return List
 func OnGetList(w http.ResponseWriter, _ *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	res := &api.GetListRes{}
 
 	listBytes, err := json.Marshal(list)
@@ -31,7 +33,16 @@ func OnGetList(w http.ResponseWriter, _ *http.Request) {
 
 // OnGetOriginURL according to 'music id', match 'bv' and use 'bv' to get 'origin address'
 func OnGetOriginURL(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
 	res := &api.GetOriginURLRes{}
+
+	if req.Method == http.MethodOptions {
+		responseHTTP(w, res)
+		return
+	}
 
 	musicID := req.PostFormValue("music_id")
 
