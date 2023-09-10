@@ -1,12 +1,11 @@
 {
-  "name": "ui",
+  "name": "listen_bilibili_ui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "author": {
     "name": "mario",
-    "url": "github.com/mats9693",
-    "email": "982254249@qq.com"
+    "url": "github.com/mats9693"
   },
   "scripts": {
     "dev": "vite",

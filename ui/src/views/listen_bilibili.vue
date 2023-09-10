@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, watch, onMounted} from "vue"
+import {ref, onMounted} from "vue"
 import {List, Music} from "@/axios/api.pb";
 import {axiosInstance} from "@/axios/request";
 import {ElMessage} from "element-plus";
@@ -25,12 +25,6 @@ onMounted(() => {
   };
 })
 
-watch(ready, async (newValue: boolean, _: boolean) => {
-  if (newValue) {
-    playNextMusic()
-  }
-})
-
 function getList() {
   axiosInstance.getList()
       .then((response: any) => {
@@ -43,7 +37,8 @@ function getList() {
         list.value = listIns
         playlist.value = listIns.playlists[0].musicList
         playIndex.value = 0
-        ready.value = true
+
+        playNextMusic()
 
         console.log("> Node: get list success.")
       })
@@ -60,6 +55,7 @@ function playNextMusic() {
   let index = playIndex.value
   playIndex.value = (playIndex.value + 1) % playlist.value.length
 
+  //@ts-ignore
   axiosInstance.getOriginURL(playlist.value[index].id)
       .then((response: any) => {
         if (response.data.err.length > 0) {

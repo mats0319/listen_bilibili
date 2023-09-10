@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 )
 
@@ -13,6 +14,15 @@ const (
 	originURLRE      = `"readyVideoUrl":\s*"([^"]*)"`
 	internalErrorMsg = "Internal Server Error"
 )
+
+func BindHTMLFile(w http.ResponseWriter, r *http.Request) {
+	dir, _ := os.Getwd()
+	path := dir + "/ui/dist" + r.RequestURI
+	if r.RequestURI == "/" {
+		path += "index.html"
+	}
+	http.ServeFile(w, r, path)
+}
 
 // OnGetList return List
 func OnGetList(w http.ResponseWriter, _ *http.Request) {
