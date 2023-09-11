@@ -9,13 +9,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", listen_bilibili.BindHTMLFile)
-	http.HandleFunc("/list/get", listen_bilibili.OnGetList)
-	http.HandleFunc("/originURL/get", listen_bilibili.OnGetOriginURL)
-
 	openWebpage()
 
-	err := http.ListenAndServe("0.0.0.0:9693", nil)
+	err := http.ListenAndServe("0.0.0.0:9693", listen_bilibili.HandlersIns)
 	if err != nil {
 		log.Println("listen and serve failed, err:", err)
 	}
