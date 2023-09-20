@@ -20,9 +20,20 @@ type Music struct {
 	Volume int32  `json:"volume"`
 }
 
+const URI_getList = "/list/get"
+
+type GetListReq struct {
+}
+
 type GetListRes struct {
 	List string `json:"list"`
 	Err  string `json:"err"`
+}
+
+const URI_getOriginalURL = "/originURL/get"
+
+type GetOriginURLReq struct {
+	MusicID string `json:"music_id"`
 }
 
 type GetOriginURLRes struct {

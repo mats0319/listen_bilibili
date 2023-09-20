@@ -1,7 +1,7 @@
 <template>
     <div class="tool-bar">
         <div class="tb-volume">
-            <el-input type="number" v-model="baseVolume" placeholder="base volume"/>
+            <el-input-number v-model="baseVolume" :min="0" :max="1" :step="0.1"/>
             <el-button type="info" plain @click="setVideoVolume">设置基础音量</el-button>
             <p>{{ volumeStr }}</p>
         </div>
@@ -20,8 +20,8 @@ import { useListStore } from "@/pinia/list.ts";
 
 const listStore = useListStore()
 
-let baseVolume = ref(0.35)
-let volume = ref(0.35)
+let baseVolume = ref<number>(0.35)
+let volume = ref<number>(0.35)
 
 onMounted(() => {
     if (!listStore.list.id) {

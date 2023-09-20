@@ -21,8 +21,8 @@ type Handlers struct {
 var HandlersIns = &Handlers{}
 
 func init() {
-	HandlersIns.HandleFunc("/list/get", onGetList)
-	HandlersIns.HandleFunc("/originURL/get", onGetOriginURL)
+	HandlersIns.HandleFunc(api.URI_getList, onGetList)
+	HandlersIns.HandleFunc(api.URI_getOriginalURL, onGetOriginURL)
 
 	log.Println("> Init HTTP Handlers Finished.")
 }

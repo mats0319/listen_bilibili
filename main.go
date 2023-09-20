@@ -11,7 +11,7 @@ import (
 func main() {
 	openWebpage()
 
-	err := http.ListenAndServe("0.0.0.0:9693", listen_bilibili.HandlersIns)
+	err := http.ListenAndServe(":9693", listen_bilibili.HandlersIns)
 	if err != nil {
 		log.Println("listen and serve failed, err:", err)
 	}

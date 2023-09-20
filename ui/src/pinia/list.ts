@@ -25,7 +25,7 @@ export let useListStore = defineStore("list", () => {
                 playlist.value = listIns.playlists[0].music_list
                 playIndex.value = 0
 
-                // playNextMusic()
+                playNextMusic()
 
                 console.log("> Node: get list success.")
             })

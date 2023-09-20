@@ -1,8 +1,8 @@
 {
   "name": "listen_bilibili_ui",
   "private": true,
-  "version": "0.1.0",
-  "description": "2023.9.20",
+  "version": "0.2.0",
+  "description": "2023.9.21",
   "type": "module",
   "author": {
     "name": "mario",
