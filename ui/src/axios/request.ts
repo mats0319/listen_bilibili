@@ -1,6 +1,6 @@
-import {axiosWrapper} from "@/axios/config";
-import {GetListRes, GetOriginURLReq, GetOriginURLRes} from "@/axios/api.pb";
-import {objectToFormData} from "@/axios/utils.ts";
+import { axiosWrapper } from "@/axios/config";
+import { GetListRes, GetOriginURLReq, GetOriginURLRes } from "@/axios/api.pb";
+import { objectToFormData } from "@/axios/utils.ts";
 
 class AxiosInstance {
     public getList(): Promise<GetListRes> {
@@ -17,4 +17,4 @@ class AxiosInstance {
 }
 
 const axiosInstance = new AxiosInstance()
-export {axiosInstance}
+export { axiosInstance }

@@ -10,7 +10,7 @@ type List struct {
 type Playlist struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
-	MusicList []Music `json:"musicList"`
+	MusicList []Music `json:"music_list"`
 }
 
 type Music struct {

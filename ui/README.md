@@ -3,7 +3,7 @@
 ## recommend
 
 - node 16
-- yarn
+- cnpm
 - vite 4.4.1
 - vue3
 - ts

@@ -1,81 +1,82 @@
 <template>
-  <video id="listenBilibili" controls autoplay>
-    <source type="video/mp4" src="">
-  </video>
+    <div class="tool-bar">
+        <div class="tb-volume">
+            <el-input type="number" v-model="baseVolume" placeholder="base volume"/>
+            <el-button type="info" plain @click="setVideoVolume">设置基础音量</el-button>
+            <p>{{ volumeStr }}</p>
+        </div>
+
+        <el-button type="info" plain @click="listStore.playNextMusic">下一首</el-button>
+    </div>
+
+    <video id="listenBilibili" controls autoplay>
+        <source type="video/mp4" src="">
+    </video>
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted} from "vue"
-import {List, Music} from "@/axios/api.pb";
-import {axiosInstance} from "@/axios/request";
-import {ElMessage} from "element-plus";
+import { ref, onMounted, computed, watch } from "vue"
+import { useListStore } from "@/pinia/list.ts";
 
-let ready = ref(false) // if 'playlist' ready
-let list = ref(List)
-let playlist = ref(Array<Music>)
-let playIndex = ref(0)
+const listStore = useListStore()
+
+let baseVolume = ref(0.35)
+let volume = ref(0.35)
 
 onMounted(() => {
-  if (!ready.value) {
-    getList()
-  }
+    if (!listStore.list.id) {
+        listStore.getList()
+    }
 
-  (document.getElementById("listenBilibili") as HTMLVideoElement).onended = (_: Event): any => {
-    playNextMusic()
-  };
+    (document.getElementById("listenBilibili") as HTMLVideoElement).onended = (_: Event): any => {
+        listStore.playNextMusic()
+    };
 })
 
-function getList() {
-  axiosInstance.getList()
-      .then((response: any) => {
-        if (response.data.err.length > 0) {
-          throw response.data.err
-        }
+function setVideoVolume(): void {
+    volume.value = baseVolume.value + listStore.volume;
+    if (volume.value < 0) {
+        volume.value = 0
+    } else if (volume.value > 1) {
+        volume.value = 1
+    }
 
-        const listIns = JSON.parse(response.data.list)
-
-        list.value = listIns
-        playlist.value = listIns.playlists[0].musicList
-        playIndex.value = 0
-
-        playNextMusic()
-
-        console.log("> Node: get list success.")
-      })
-      .catch((err: any) => {
-        console.log("> Node: get list failed.", err)
-        ElMessage({
-          message: "get list failed.",
-          type: "error",
-        })
-      })
+    (document.getElementById("listenBilibili") as HTMLVideoElement).volume = volume.value
 }
 
-function playNextMusic() {
-  let index = playIndex.value
-  playIndex.value = (playIndex.value + 1) % playlist.value.length
+const volumeStr = computed<string>(() => {
+    return "当前视频音量：" + volume.value.toString()
+})
 
-  //@ts-ignore
-  axiosInstance.getOriginURL(playlist.value[index].id)
-      .then((response: any) => {
-        if (response.data.err.length > 0) {
-          throw response.data.err
-        }
-
-        (document.getElementById("listenBilibili") as HTMLVideoElement).src = response.data.url;
-        (document.getElementById("listenBilibili") as HTMLVideoElement).play();
-        (document.getElementById("listenBilibili") as HTMLVideoElement).volume = 0.35;
-
-        console.log("> Node: get origin url success.")
-      })
-      .catch((err: any) => {
-        console.log("> Node: get origin url failed.", err)
-        ElMessage({
-          message: "get origin url failed.",
-          type: "error",
-        })
-      })
-}
+watch(() => listStore.originURL, (newValue: string) => {
+    (document.getElementById("listenBilibili") as HTMLVideoElement).src = newValue;
+    setVideoVolume();
+    (document.getElementById("listenBilibili") as HTMLVideoElement).play();
+})
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.tool-bar {
+    padding-bottom: 10rem;
+
+    .tb-volume {
+        display: flex;
+        height: 4rem;
+        padding-bottom: 2rem;
+
+        .el-input {
+            width: fit-content;
+        }
+
+        .el-button {
+            height: inherit;
+            margin-left: 3rem;
+            margin-right: 3rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}
+</style>

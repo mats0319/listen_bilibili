@@ -6,30 +6,18 @@
     {
       "id": "10dfa469-e91e-4a4d-aaee-31202bba7fcb",
       "name": "古风",
-      "musicList": [
+      "music_list": [
         {
           "id": "77885ca7-7af6-4823-9e90-7ff075fdbd48",
           "name": "春三月",
-          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=22",
+          "bv": "https://www.bilibili.com/video/BV1r64y1S7iS",
           "volume": 0
         },
         {
           "id": "bfb375ea-f10e-432d-8d9d-a28dd6098348",
           "name": "风过谢桃花",
           "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=30",
-          "volume": 0
-        },
-        {
-          "id": "4069b428-f458-45d3-ade2-080c535480ad",
-          "name": "精卫",
-          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=3",
-          "volume": 0
-        },
-        {
-          "id": "b156f8cf-ae1d-46cd-9da7-2c17e740d26a",
-          "name": "云与海",
-          "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=9",
-          "volume": 0
+          "volume": -10
         },
         {
           "id": "86cc0f36-d441-40b7-ae93-4dddb1370876",
@@ -65,12 +53,6 @@
           "id": "ef39743d-e2b8-4cad-a749-fa1b2656c64b",
           "name": "旧梦一场",
           "bv": "https://www.bilibili.com/video/BV1nk4y1P79g?p=43",
-          "volume": 0
-        },
-        {
-          "id": "e385c28a-a899-4f02-b2bc-1f71f8e08115",
-          "name": "空台戏",
-          "bv": "https://www.bilibili.com/video/BV15h41147DD",
           "volume": 0
         },
         {
