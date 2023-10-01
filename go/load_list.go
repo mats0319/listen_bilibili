@@ -1,26 +1,32 @@
 package listen_bilibili
 
 import (
-	"encoding/json"
 	"github.com/mats9693/listenBilibili/api/go"
+	"gopkg.in/yaml.v3"
 	"log"
 	"os"
+	"time"
 )
 
 var list = &api.List{}
 
 func init() {
-	listBytes, err := os.ReadFile("./listen_bilibili.json")
+	listBytes, err := os.ReadFile("./listen_bilibili.yaml")
 	if err != nil {
 		log.Println("read file failed, err: ", err)
-		os.Exit(1)
+		waitAndExit()
 	}
 
-	err = json.Unmarshal(listBytes, list)
+	err = yaml.Unmarshal(listBytes, list)
 	if err != nil {
 		log.Println("deserialize list failed, err: ", err)
-		os.Exit(1)
+		waitAndExit()
 	}
 
 	log.Println("> Init List Finished.")
+}
+
+func waitAndExit() {
+	time.Sleep(time.Second * 3)
+	os.Exit(1)
 }

@@ -1,6 +1,6 @@
-import { axiosWrapper } from "@/axios/config";
-import { GetListRes, GetOriginURLReq, GetOriginURLRes } from "@/axios/api.pb";
-import { objectToFormData } from "@/axios/utils.ts";
+import { axiosWrapper } from "./config";
+import { GetListRes, GetOriginURLReq, GetOriginURLRes } from "./list.go";
+import { objectToFormData } from "./utils";
 
 class ListAxios {
     public getList(): Promise<GetListRes> {

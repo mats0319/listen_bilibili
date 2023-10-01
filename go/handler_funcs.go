@@ -7,90 +7,14 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"os"
 	"regexp"
-	"sync"
 )
 
-type handlerFunc = func(r *http.Request) ([]byte, error)
-
-type Handlers struct {
-	handlersMap sync.Map // request uri - func(*http.request) ([]byte, error)
-}
-
-var HandlersIns = &Handlers{}
-
 func init() {
-	HandlersIns.HandleFunc(api.URI_getList, onGetList)
-	HandlersIns.HandleFunc(api.URI_getOriginalURL, onGetOriginURL)
+	handlerIns.HandleFunc(api.URI_GetList, onGetList)
+	handlerIns.HandleFunc(api.URI_GetOriginURL, onGetOriginURL)
 
-	log.Println("> Init HTTP Handlers Finished.")
-}
-
-func (h *Handlers) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	// allow cross-origin
-	writer.Header().Set("Access-Control-Allow-Origin", "*")
-
-	// bind html file
-	if request.RequestURI == "/" {
-		dir, _ := os.Getwd()
-		path := dir + "/ui/dist/index.html"
-		http.ServeFile(writer, request, path)
-		return
-	}
-
-	// skip 'http options' request
-	if request.Method == http.MethodOptions {
-		response(writer, []byte(""))
-		return
-	}
-
-	// log req
-	log.Printf("> Receive new request. uri: %s\n", request.RequestURI)
-
-	// invoke handleFunc func
-	var res []byte
-	v, ok := h.handlersMap.Load(request.RequestURI)
-	if !ok { // unknown uri, regard as web source
-		dir, _ := os.Getwd()
-		path := dir + "/ui/dist" + request.RequestURI
-		if request.RequestURI == "/" {
-			path += "index.html"
-		}
-		http.ServeFile(writer, request, path)
-		return
-	}
-
-	handleFuncIns, ok := v.(handlerFunc)
-	if !ok {
-		http.Error(writer, "type assert error", http.StatusInternalServerError)
-		return
-	}
-
-	res, err := handleFuncIns(request)
-	if err != nil {
-		res = []byte(err.Error())
-	}
-
-	// log res
-	log.Printf("> Handle request %s: %t\n", request.RequestURI, err == nil)
-
-	// response
-	response(writer, res)
-}
-
-func (h *Handlers) HandleFunc(pattern string, hf handlerFunc) {
-	log.Println("> register http handler on uri: ", pattern)
-
-	h.handlersMap.Store(pattern, hf)
-}
-
-func response(writer http.ResponseWriter, data []byte) {
-	_, err := writer.Write(data)
-	if err != nil {
-		http.Error(writer, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	log.Println("> Init HTTP Handler Finished.")
 }
 
 func onGetList(_ *http.Request) ([]byte, error) {

@@ -1,0 +1,189 @@
+playlists:
+  - id: "10dfa469-e91e-4a4d-aaee-31202bba7fcb"
+    name: "mario"
+    description: ""
+    music_list:
+      - id: "77885ca7-7af6-4823-9e90-7ff075fdbd48"
+        name: "春三月"
+        bv: "https://www.bilibili.com/video/BV1r64y1S7iS"
+        description: ""
+        volume: 10
+      - id: "bfb375ea-f10e-432d-8d9d-a28dd6098348"
+        name: "风过谢桃花"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=30"
+        description: ""
+        volume: -10
+      - id: "09402b59-7503-4871-bbd0-7afb53855c8b"
+        name: "花与剑"
+        bv: "https://www.bilibili.com/video/BV1hL41127Qf"
+        description: ""
+        volume: -10
+      - id: "86cc0f36-d441-40b7-ae93-4dddb1370876"
+        name: "晚风作酒"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=12"
+        description: ""
+        volume: -10
+      - id: "4d882ca0-5ad6-4d1c-b8d7-13f518575ec3"
+        name: "万疆"
+        bv: "https://www.bilibili.com/video/BV1Gq4y1Z75X"
+        description: ""
+        volume: -5
+      - id: "c675bc87-a25d-4313-87df-f1de3a78f4c4"
+        name: "不负人间"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=19"
+        description: ""
+        volume: -5
+      - id: "c2a8b613-91d1-406d-9cca-e988895c2b2f"
+        name: "冬眠"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=27"
+        description: ""
+        volume: 0
+      - id: "ef39743d-e2b8-4cad-a749-fa1b2656c64b"
+        name: "旧梦一场"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=43"
+        description: ""
+        volume: 0
+      - id: "8f441126-10f1-4e87-b87b-d64af56e56bc"
+        name: "落花情"
+        bv: "https://www.bilibili.com/video/BV1Us411t7XH"
+        description: ""
+        volume: 0
+      - id: "c0229547-f128-4b68-90ef-9864244fa29b"
+        name: "慕夏"
+        bv: "https://www.bilibili.com/video/BV1et4y1Q78S"
+        description: ""
+        volume: 0
+      - id: "95a93f1c-d101-43ba-9379-63f7d62a7a8f"
+        name: "难却"
+        bv: "https://www.bilibili.com/video/BV1pg411b7Ug"
+        description: ""
+        volume: 0
+      - id: "99b0a2c1-ef90-465a-8fe7-b93438564af8"
+        name: "你若三冬"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=55"
+        description: ""
+        volume: 0
+      - id: "e226d0be-86e9-4bdd-afc8-d1f494614e5b"
+        name: "诀爱"
+        bv: "https://www.bilibili.com/video/BV1gx4y1A7pn"
+        description: ""
+        volume: 0
+      - id: "d88e9ac3-333c-4d30-8d02-9fd60d444e70"
+        name: "人间烟火"
+        bv: "https://www.bilibili.com/video/BV1eS4y1U71j"
+        description: ""
+        volume: 0
+      - id: "3e714a9c-3433-4ff8-a13c-6188fbcc99d8"
+        name: "沈园外"
+        bv: "https://www.bilibili.com/video/BV1GP411r755"
+        description: ""
+        volume: 0
+      - id: "705e145f-547f-47eb-a6c4-2bbc91464193"
+        name: "叹云兮"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=72"
+        description: ""
+        volume: 0
+      - id: "d5af10b3-d202-4c95-abcd-4d0a799d590a"
+        name: "余情未了"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=92"
+        description: ""
+        volume: -10
+      - id: "ee8a2b62-e14c-4bd4-ac19-f1672e604765"
+        name: "云水谣"
+        bv: "https://www.bilibili.com/video/BV1nk4y1P79g?p=96"
+        description: ""
+        volume: 0
+      - id: "690ea854-4c08-4daa-8000-7e2edd58fb3f"
+        name: "体面"
+        bv: "https://www.bilibili.com/video/BV11k4y1L7Vp"
+        description: "唐恬作词"
+        volume: 0
+      - id: "ba94a556-90e4-4b74-a686-939939071571"
+        name: "如愿"
+        bv: "https://www.bilibili.com/video/BV1Yq4y1r7t1"
+        description: "唐恬作词"
+        volume: 10
+      - id: "39257598-360c-47fe-bb79-920ae039d45c"
+        name: "笼"
+        bv: "https://www.bilibili.com/video/BV1gu411b7iF"
+        description: "唐恬作词"
+        volume: 0
+      - id: "7785c12d-8f9f-4525-bd2e-f428fb5ff905"
+        name: "混沌"
+        bv: "https://www.bilibili.com/video/BV1Hh411j7Av"
+        description: ""
+        volume: -5
+      - id: "71a67ed6-5da7-4b92-9ed1-8001e232b9e0"
+        name: "吹梦到西洲"
+        bv: "https://www.bilibili.com/video/BV15h4y1A7BN"
+        description: ""
+        volume: 0
+      - id: "0b2920c1-6e30-4991-bed1-f85c99c13432"
+        name: "一直很安静"
+        bv: "https://www.bilibili.com/video/BV1WX4y1R74f"
+        description: ""
+        volume: 0
+      - id: "6fb8d7bd-48db-4bb2-b53b-77b206d54b10"
+        name: "可惜没如果"
+        bv: "https://www.bilibili.com/video/BV1sw411v7YQ"
+        description: ""
+        volume: 0
+      - id: "f71a95c7-3a68-4131-b3e3-4f89e3676641"
+        name: "流光记"
+        bv: "https://www.bilibili.com/video/BV1SW411m7Tf"
+        description: ""
+        volume: 0
+      - id: "21f8f2f9-3254-48f0-b64b-bcdc8026701b"
+        name: "眉南边"
+        bv: "https://www.bilibili.com/video/BV1hu411v78W"
+        description: ""
+        volume: -5
+      - id: "d9704b6d-bd62-48c0-a39c-911b46b77867"
+        name: "动物世界"
+        bv: "https://www.bilibili.com/video/BV1uK411S7ka"
+        description: ""
+        volume: 0
+      - id: "736f7686-c9e2-4f8b-ab59-a30157eba3cc"
+        name: "明天，你好"
+        bv: "https://www.bilibili.com/video/BV13v411s7hw"
+        description: ""
+        volume: 0
+      - id: "0e35564d-14d0-4181-b310-9017f095046c"
+        name: "风的视线"
+        bv: "https://www.bilibili.com/video/BV17u411Z7e9"
+        description: "pgr"
+        volume: -5
+      - id: "56bf7350-c75f-4f41-b6f1-59ce7b98c718"
+        name: "盘旋"
+        bv: "https://www.bilibili.com/video/BV1h64y1h7Um"
+        description: "pgr"
+        volume: -5
+      - id: "0916da94-7e22-476b-bdfa-cf98a4bd567a"
+        name: "烟笼长安"
+        bv: "https://www.bilibili.com/video/BV1FM4y1m7h2"
+        description: ""
+        volume: 0
+      - id: "f49b5dd1-485a-477b-9ad5-648bc57cfeba"
+        name: "年少有为"
+        bv: "https://www.bilibili.com/video/BV1WP4y1p7Gg"
+        description: ""
+        volume: 0
+      - id: "b153eb90-bc4e-414f-bd70-bdabcc3c09dc"
+        name: "山丘"
+        bv: "https://www.bilibili.com/video/BV1Aa4y1N7P8"
+        description: ""
+        volume: 0
+      - id: "16221900-7693-4d46-a0f4-8ba02bf85a98"
+        name: "给自己的歌"
+        bv: "https://www.bilibili.com/video/BV19c411M7Av?p=7"
+        description: ""
+        volume: 0
+  - id: "0bc65299-7f9e-4907-ade5-ce90869f064b"
+    name: "history"
+    description: ""
+    music_list:
+      - id: "7dbdd3ec-41fa-4706-a836-601b2158b62d"
+        name: "The show - Lenka"
+        bv: "https://www.bilibili.com/video/BV1Vt411T7gC"
+        description: ""
+        volume: -5

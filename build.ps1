@@ -16,9 +16,9 @@ Set-Location $PSScriptRoot
     go build -o "listen_bilibili.exe"
 
     Move-Item "listen_bilibili.exe" -Destination "./build/listen_bilibili.exe"
-    Copy-Item "listen_bilibili.json" -Destination "./build/listen_bilibili.json"
+    Copy-Item "listen_bilibili.yaml" -Destination "./build/listen_bilibili.yaml"
 
-    # manual
+    # user manual
     Copy-Item "README.md" -Destination "./build/README.md"
 
     # web code

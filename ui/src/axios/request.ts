@@ -12,7 +12,7 @@ class AxiosInstance {
             music_id: musicID
         }
 
-        return axiosWrapper.post("/originURL/get", objectToFormData(req))
+        return axiosWrapper.post("/origin-url/get", objectToFormData(req))
     }
 }
 
