@@ -20,13 +20,7 @@ func init() {
 func onGetList(_ *http.Request) ([]byte, error) {
 	res := &api.GetListRes{}
 
-	listBytes, err := json.Marshal(list)
-	if err != nil {
-		log.Println("json marshal failed, err:", err)
-		res.Err = err.Error()
-	} else {
-		res.List = string(listBytes)
-	}
+	res.List = *list
 
 	resBytes, err := json.Marshal(res)
 	if err != nil {

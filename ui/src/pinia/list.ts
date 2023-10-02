@@ -19,7 +19,7 @@ export let useListStore = defineStore("list", () => {
                     throw response.data.err
                 }
 
-                const listIns = JSON.parse(response.data.list)
+                const listIns = response.data.list
 
                 list.value = listIns
                 playlist.value = listIns.playlists[0].music_list
