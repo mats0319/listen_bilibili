@@ -23,3 +23,4 @@ go.work
 go.sum
 
 build
+*.log

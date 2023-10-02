@@ -54,7 +54,7 @@ fields []field
 // 针对可能存在的自定义类型，field type正常记录，生成ts代码时，会通过一个默认类型转换表来检查一个类型是不是自定义类型
 type field struct {
 name string // field name, get from tag 'json'
-field
+fieldType string 
 }
 
 type service struct {

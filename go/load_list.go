@@ -1,32 +1,27 @@
-package listen_bilibili
+package lb
 
 import (
 	"github.com/mats9693/listenBilibili/api/go"
 	"gopkg.in/yaml.v3"
-	"log"
 	"os"
-	"time"
 )
 
 var list = &api.List{}
 
-func init() {
-	listBytes, err := os.ReadFile("./listen_bilibili.yaml")
+func LoadList(filename string) error {
+	listBytes, err := os.ReadFile(filename)
 	if err != nil {
-		log.Println("read file failed, err: ", err)
-		waitAndExit()
+		Println("read list file failed, err: ", err)
+		return err
 	}
 
 	err = yaml.Unmarshal(listBytes, list)
 	if err != nil {
-		log.Println("deserialize list failed, err: ", err)
-		waitAndExit()
+		Println("deserialize list failed, err: ", err)
+		return err
 	}
 
-	log.Println("> Init List Finished.")
-}
+	Println("> Init List Finished.")
 
-func waitAndExit() {
-	time.Sleep(time.Second * 3)
-	os.Exit(1)
+	return nil
 }

@@ -1,20 +1,19 @@
-package listen_bilibili
+package lb
 
 import (
 	"encoding/json"
 	"errors"
 	"github.com/mats9693/listenBilibili/api/go"
 	"io"
-	"log"
 	"net/http"
 	"regexp"
 )
 
-func init() {
+func initHandler() {
 	handlerIns.HandleFunc(api.URI_GetList, onGetList)
 	handlerIns.HandleFunc(api.URI_GetOriginURL, onGetOriginURL)
 
-	log.Println("> Init HTTP Handler Finished.")
+	Println("> Init HTTP Handler Finished.")
 }
 
 func onGetList(_ *http.Request) ([]byte, error) {
@@ -24,7 +23,7 @@ func onGetList(_ *http.Request) ([]byte, error) {
 
 	resBytes, err := json.Marshal(res)
 	if err != nil {
-		log.Println("json marshal failed, err:", err)
+		Println("json marshal failed, err:", err)
 		res.Err = err.Error()
 		return nil, err
 	}
@@ -40,7 +39,7 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 
 	url, err := getOriginURL(musicID)
 	if err != nil {
-		log.Println("get origin url failed")
+		Println("get origin url failed")
 		res.Err = err.Error()
 	} else {
 		res.URL = url
@@ -48,7 +47,7 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 
 	resBytes, err := json.Marshal(res)
 	if err != nil {
-		log.Println("json marshal failed, err:", err)
+		Println("json marshal failed, err:", err)
 		res.Err = err.Error()
 		return nil, err
 	}
@@ -59,20 +58,20 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 func getOriginURL(musicID string) (string, error) {
 	bv := getBv(musicID)
 	if len(bv) < 1 {
-		log.Println("unmatched music id: ", musicID)
+		Println("unmatched music id: ", musicID)
 		return "", errors.New("unmatched music id: " + musicID)
 	}
 
 	data, err := getHTML(bv)
 	if err != nil {
-		log.Println("get html failed: ", err)
+		Println("get html failed: ", err)
 		return "", err
 	}
 
 	// get 'origin url' use RE
 	originURL := matchOriginURL(data)
 	if len(originURL) < 1 {
-		log.Println("RE match failed")
+		Println("RE match failed")
 		return "", errors.New("RE match failed")
 	}
 
@@ -106,14 +105,14 @@ func getHTML(bv string) ([]byte, error) {
 
 	req, err := http.NewRequest("GET", bv, nil)
 	if err != nil {
-		log.Println("create new request failed, err:", err)
+		Println("create new request failed, err:", err)
 		return nil, err
 	}
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36")
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Println("http get failed, err:", err)
+		Println("http get failed, err:", err)
 		return nil, err
 	}
 	defer func() {
@@ -122,7 +121,7 @@ func getHTML(bv string) ([]byte, error) {
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		log.Println("read http res body failed, err:", err)
+		Println("read http res body failed, err:", err)
 		return nil, err
 	}
 
@@ -133,7 +132,7 @@ func matchOriginURL(data []byte) string {
 	reRule := regexp.MustCompile(`"readyVideoUrl":\s*"([^"]*)"`)
 	result := reRule.FindAllSubmatch(data, -1)
 	if len(result) < 1 || len(result[0]) < 2 {
-		log.Println("RE match failed.")
+		Println("RE match failed.")
 		return ""
 	}
 

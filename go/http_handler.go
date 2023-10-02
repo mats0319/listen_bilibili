@@ -1,7 +1,6 @@
-package listen_bilibili
+package lb
 
 import (
-	"log"
 	"net/http"
 	"os"
 )
@@ -17,6 +16,10 @@ var handlerIns = &Handler{
 }
 
 func GetHandler() *Handler {
+	if len(handlerIns.handlerFuncs) < 1 {
+		initHandler()
+	}
+
 	return handlerIns
 }
 
@@ -31,7 +34,7 @@ func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// log req
-	log.Printf("> Receive new request. uri: %s\n", request.RequestURI)
+	Printf("> Receive new request. uri: %s\n", request.RequestURI)
 
 	// invoke handleFunc func
 	var res []byte
@@ -52,14 +55,14 @@ func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// log res
-	log.Printf("> Handle request %s: %t\n", request.RequestURI, err == nil)
+	Printf("> Handle request %s: %t\n", request.RequestURI, err == nil)
 
 	// response
 	response(writer, res)
 }
 
 func (h *Handler) HandleFunc(pattern string, hf handlerFunc) {
-	log.Println("> registe http handler on uri: ", pattern)
+	Println("> register http handler on uri: ", pattern)
 
 	h.handlerFuncs[pattern] = hf
 }
