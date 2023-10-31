@@ -1,19 +1,21 @@
 import { defineStore } from "pinia"
-import { List, Music } from "@/axios/api.pb.ts"
+import { List, Music } from "@/axios/list.go.ts"
 import { ref } from "vue"
-import { axiosInstance } from "@/axios/request.ts";
+import { listAxios } from "@/axios/list.http.ts";
 import { ElMessage } from "element-plus";
 
 export let useListStore = defineStore("list", () => {
     let list = ref<List>({})
     let playlist = ref<Array<Music>>([])
-    let playIndex = ref(0)
 
+    // data for current playing music
+    let musicID = ref("")
+    let musicName = ref("")
     let originURL = ref("")
     let volume = ref(0) // already like '0.3'
 
     function getList(): void {
-        axiosInstance.getList()
+        listAxios.getList()
             .then((response: any) => {
                 if (response.data.err.length > 0) {
                     throw response.data.err
@@ -23,9 +25,6 @@ export let useListStore = defineStore("list", () => {
 
                 list.value = listIns
                 playlist.value = listIns.playlists[0].music_list
-                playIndex.value = 0
-
-                playNextMusic()
 
                 console.log("> Node: get list success.")
             })
@@ -39,16 +38,33 @@ export let useListStore = defineStore("list", () => {
     }
 
     function playNextMusic(): void {
-        axiosInstance.getOriginURL(playlist.value[playIndex.value].id!)
+        let nextMusic = getNextMusic()
+        musicID.value = nextMusic.id as string
+
+        playMusic()
+    }
+
+    function playMusic(): void {
+        if (musicID.value.length < 1) {
+            let nextMusic = getNextMusic()
+            musicID.value = nextMusic.id as string
+        }
+
+        listAxios.getOriginURL(musicID.value)
             .then((response: any) => {
                 if (response.data.err.length > 0) {
                     throw response.data.err
                 }
 
                 originURL.value = response.data.url
-                volume.value = playlist.value[playIndex.value].volume! / 100
+                volume.value = response.data.volume / 100
 
-                playIndex.value = (playIndex.value + 1) % playlist.value.length
+                for (let i = 0; i < playlist.value.length; i++) {
+                    if (musicID.value === playlist.value[i].id) {
+                        musicName.value = playlist.value[i].name as string
+                        break
+                    }
+                }
 
                 console.log("> Node: get origin url success.")
             })
@@ -60,18 +76,37 @@ export let useListStore = defineStore("list", () => {
                 })
 
                 setTimeout(() => {
-                    playNextMusic() // auto re-try in 3s
+                    playMusic() // auto re-try in 3s
                 }, 3000)
             })
+    }
+
+    function getNextMusic(): Music {
+        let nextMusic: Music = playlist.value[0]
+        for (let i = 0; i < playlist.value.length; i++) {
+            if (musicID.value === playlist.value[i].id) {
+                let index = (i + 1) % playlist.value.length
+                nextMusic = playlist.value[index]
+                break
+            }
+        }
+
+        return nextMusic
     }
 
     return {
         list,
         playlist,
-        playIndex,
+
+        musicID,
+        musicName,
         originURL,
         volume,
+
         getList,
         playNextMusic,
+        playMusic,
     }
-})
+}/*, {
+    persist: true,
+}*/)

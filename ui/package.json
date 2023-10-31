@@ -1,8 +1,8 @@
 {
   "name": "listen_bilibili_ui",
   "private": true,
-  "version": "0.2.1",
-  "description": "2023.9.30",
+  "version": "0.3.0",
+  "description": "2023.10.31",
   "type": "module",
   "author": {
     "name": "mario",
@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "element-plus": "^2.3.9",
     "pinia": "^2.1.6",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

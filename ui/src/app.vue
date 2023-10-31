@@ -1,5 +1,5 @@
 <template>
-    <router-view/>
+  <router-view/>
 </template>
 
 <script setup lang="ts">
@@ -7,18 +7,17 @@ import { onMounted } from "vue"
 import config from "../package.json"
 
 onMounted(() => {
-    // @ts-ignore
     console.log("> version: v" + config.version + "-" + config.description)
 })
 </script>
 
 <style lang="less">
 html {
-    font-size: 62.5%; // 1rem = 10px
+  font-size: 62.5%; // 1rem = 10px
 }
 
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 </style>

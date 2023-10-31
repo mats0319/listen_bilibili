@@ -55,7 +55,7 @@ func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// log res
-	Printf("> Handle request %s: %t\n", request.RequestURI, err == nil)
+	Printf("> Handle request %s success: %t\n", request.RequestURI, err == nil)
 
 	// response
 	response(writer, res)

@@ -27,7 +27,7 @@ func init() {
 func main() {
 	err := lb.LoadList(listFile)
 	if err != nil {
-		lb.Println("load list failed, err: ", err)
+		lb.Println("load list failed, error: ", err)
 		return
 	}
 
@@ -35,6 +35,6 @@ func main() {
 
 	err = http.ListenAndServe(":9693", lb.GetHandler())
 	if err != nil {
-		lb.Println("listen and serve failed, err: ", err)
+		lb.Println("listen and serve failed, error: ", err)
 	}
 }

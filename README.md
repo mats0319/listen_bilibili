@@ -31,4 +31,5 @@ A tool for listening music, use Bilibili source.
 2. 实现操作歌单功能
 3. 前端引入eslint、prettier
 4. 代码优化
-5. 前端查看歌单，选择播放
+5. 前端查看歌单，选择播放、随机播放
+6. 调整为不自动播放第一首，这样方便开发

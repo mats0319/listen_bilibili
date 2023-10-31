@@ -11,13 +11,13 @@ var list = &api.List{}
 func LoadList(filename string) error {
 	listBytes, err := os.ReadFile(filename)
 	if err != nil {
-		Println("read list file failed, err: ", err)
+		Println("read list file failed, error: ", err)
 		return err
 	}
 
 	err = yaml.Unmarshal(listBytes, list)
 	if err != nil {
-		Println("deserialize list failed, err: ", err)
+		Println("deserialize list failed, error: ", err)
 		return err
 	}
 
