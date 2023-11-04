@@ -6,24 +6,24 @@ Set-Location $PSScriptRoot
         return
     }
 
-    if (Test-Path "./build") {
-        Remove-Item "./build/*" -Recurse
+    if (Test-Path "./listen") {
+        Remove-Item "./listen/*" -Recurse
     } else {
-        mkdir "./build"
+        mkdir "./listen"
     }
 
     # binary executable file
     go build -o "listen_bilibili.exe"
 
-    Move-Item "listen_bilibili.exe" -Destination "./build/listen_bilibili.exe"
-    Copy-Item "list.yaml" -Destination "./build/list.yaml"
+    Move-Item "listen_bilibili.exe" -Destination "./listen/listen_bilibili.exe"
+    Copy-Item "list.yaml" -Destination "./listen/list.yaml"
 
     # user manual
-    Copy-Item "README.md" -Destination "./build/README.md"
+    Copy-Item "README.md" -Destination "./listen/README.md"
 
     # web code
-    mkdir "./build/ui"
-    Copy-Item "./ui/dist/" -Destination "./build/ui/" -Recurse
+    mkdir "./listen/ui"
+    Copy-Item "./ui/dist/" -Destination "./listen/ui/" -Recurse
 
 Set-Location $path
 

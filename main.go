@@ -5,6 +5,7 @@ import (
 	"github.com/mats9693/listenBilibili/go"
 	"net/http"
 	"os"
+	"os/exec"
 )
 
 var (
@@ -31,10 +32,19 @@ func main() {
 		return
 	}
 
-	lb.OpenWebpage()
+	openWebpage()
 
 	err = http.ListenAndServe(":9693", lb.GetHandler())
 	if err != nil {
 		lb.Println("listen and serve failed, error: ", err)
+	}
+}
+
+func openWebpage() {
+	// auto open webpage in Windows OS
+	err := exec.Command("cmd", "/c start http://127.0.0.1:9693").Start()
+	if err != nil {
+		lb.Println("auto open webpage failed：", err)
+		lb.Println("please visit manually：http://127.0.0.1:9693")
 	}
 }

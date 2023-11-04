@@ -25,11 +25,5 @@ A tool for listening music, use Bilibili source.
 
 ## todo
 
-1. 编写http请求go、ts数据结构统一工具：实现根据go数据结构生成ts代码的工具。
-    1. 使用grpc protocol buffer文件类型生成的go代码，难以应对**字段是数组**的情况，  
-       因为工具生成的go数组使用指针形式（形如`List *[]Playlist`)，不能简单的使用json包反序列化
-2. 实现操作歌单功能
-3. 前端引入eslint、prettier
-4. 代码优化
-5. 前端查看歌单，选择播放、随机播放
-6. 调整为不自动播放第一首，这样方便开发
+1. 实现操作歌单功能
+2. 前端引入eslint、prettier

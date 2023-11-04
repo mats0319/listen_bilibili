@@ -11,6 +11,7 @@
             :value="item.music_list"
           />
         </el-select>
+        当前列表包含歌曲数量&#58;&nbsp;{{ listStore.playlist.length }}
       </div>
 
       <el-table :data="listStore.playlist" max-height="60vh" stripe highlight-current-row>

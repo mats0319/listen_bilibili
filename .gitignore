@@ -22,5 +22,5 @@ go.work
 .idea
 go.sum
 
-build
+listen
 *.log

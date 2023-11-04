@@ -40,7 +40,7 @@ func FlagPrintDefaults() {
 
 func openLogFile() error {
 	var err error
-	file, err = os.OpenFile("./log.log", os.O_CREATE|os.O_APPEND, 0777)
+	file, err = os.OpenFile("./log.log", os.O_CREATE|os.O_TRUNC, 0777)
 	if err != nil {
 		Println("open log file failed, error: ", err)
 		return err
