@@ -1,6 +1,7 @@
 package lb
 
 import (
+	api "github.com/mats9693/listen_bilibili/api/go"
 	"net/http"
 	"os"
 )
@@ -12,7 +13,7 @@ type Handler struct {
 }
 
 var handlerIns = &Handler{
-	handlerFuncs: make(map[string]handlerFunc, 2),
+	handlerFuncs: make(map[string]handlerFunc, 3),
 }
 
 func GetHandler() *Handler {
@@ -21,6 +22,14 @@ func GetHandler() *Handler {
 	}
 
 	return handlerIns
+}
+
+func initHandler() {
+	handlerIns.HandleFunc(api.URI_GetList, onGetList)
+	handlerIns.HandleFunc(api.URI_GetOriginURL, onGetOriginURL)
+	handlerIns.HandleFunc(api.URI_ModifyList, onModifyList)
+
+	Println("> Init HTTP Handler Finished.")
 }
 
 func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
@@ -33,7 +42,7 @@ func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	// log req
+	// log req, todo: try to print req params?
 	Printf("> Receive new request. uri: %s\n", request.RequestURI)
 
 	// invoke handleFunc func

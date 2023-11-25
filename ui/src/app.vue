@@ -7,7 +7,7 @@ import { onMounted } from "vue"
 import config from "../package.json"
 
 onMounted(() => {
-    console.log("> version: v" + config.version + "-" + config.description)
+    console.log("> version: v" + config.version + "-" + config.description);
 })
 </script>
 

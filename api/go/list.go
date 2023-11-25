@@ -22,21 +22,32 @@ type Music struct {
 const URI_GetList = "/list/get"
 
 type GetListReq struct {
+	ReloadList bool `json:"reload_list"`
 }
 
 type GetListRes struct {
-	List List   `json:"list" yaml:"list"`
-	Err  string `json:"err" yaml:"err"`
+	List List   `json:"list"`
+	Err  string `json:"err"`
 }
 
 const URI_GetOriginURL = "/origin-url/get"
 
 type GetOriginURLReq struct {
-	MusicID string `json:"music_id" yaml:"music_id"`
+	MusicID string `json:"music_id"`
 }
 
 type GetOriginURLRes struct {
-	URL    string `json:"url" yaml:"url"`
-	Volume int32  `json:"volume" yaml:"volume"`
-	Err    string `json:"err" yaml:"err"`
+	URL    string `json:"url"`
+	Volume int32  `json:"volume"`
+	Err    string `json:"err"`
+}
+
+const URI_ModifyList = "/list/modify"
+
+type ModifyListReq struct {
+	List string `json:"list"` // json string
+}
+
+type ModifyListRes struct {
+	Err string `json:"err"`
 }

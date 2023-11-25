@@ -1,6 +1,6 @@
 // Generate File, Should not Edit.
 // Author: mario. https://github.com/mats9693
-// Version: goc_ts v0.1.0
+// Version: goc_ts v0.2.1
 
 import axios, { AxiosInstance } from "axios";
 

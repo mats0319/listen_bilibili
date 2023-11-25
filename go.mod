@@ -1,4 +1,4 @@
-module github.com/mats9693/listenBilibili
+module github.com/mats9693/listen_bilibili
 
 go 1.21
 

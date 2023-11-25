@@ -1,7 +1,7 @@
 package lb
 
 import (
-	"flag"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -31,18 +31,19 @@ func Println(v ...any) {
 	newLogger.Println(v...)
 }
 
-func FlagPrintDefaults() {
-	Println("Options: ")
-	flag.PrintDefaults()
-	flag.CommandLine.SetOutput(file)
-	flag.PrintDefaults()
-}
-
 func openLogFile() error {
-	var err error
-	file, err = os.OpenFile("./log.log", os.O_CREATE|os.O_TRUNC, 0777)
+	// log file not init yet in this func, just write log to cmd window
+	err := os.MkdirAll("./log/", 0777)
 	if err != nil {
-		Println("open log file failed, error: ", err)
+		log.Println("mkdir './log/' failed, error: ", err)
+		return err
+	}
+
+	filename := fmt.Sprintf("./log/log_%d.log", time.Now().Unix())
+
+	file, err = os.OpenFile(filename, os.O_CREATE|os.O_TRUNC, 0777)
+	if err != nil {
+		log.Println("open log file failed, error: ", err)
 		return err
 	}
 
@@ -51,7 +52,7 @@ func openLogFile() error {
 
 func waitAndExit(second int) {
 	for i := 0; i < second; i++ {
-		Printf("Exit in %ds.\n", second-i)
+		log.Printf("Exit in %ds.\n", second-i)
 		time.Sleep(time.Second)
 	}
 

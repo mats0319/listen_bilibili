@@ -3,33 +3,11 @@ package lb
 import (
 	"encoding/json"
 	"errors"
-	"github.com/mats9693/listenBilibili/api/go"
+	"github.com/mats9693/listen_bilibili/api/go"
 	"io"
 	"net/http"
 	"regexp"
 )
-
-func initHandler() {
-	handlerIns.HandleFunc(api.URI_GetList, onGetList)
-	handlerIns.HandleFunc(api.URI_GetOriginURL, onGetOriginURL)
-
-	Println("> Init HTTP Handler Finished.")
-}
-
-func onGetList(_ *http.Request) ([]byte, error) {
-	res := &api.GetListRes{}
-
-	res.List = *list
-
-	resBytes, err := json.Marshal(res)
-	if err != nil {
-		Println("json marshal failed, error:", err)
-		res.Err = err.Error()
-		return nil, err
-	}
-
-	return resBytes, nil
-}
 
 // onGetOriginURL according to 'music id', match 'bv' and use 'bv' to get 'origin address'
 func onGetOriginURL(req *http.Request) ([]byte, error) {

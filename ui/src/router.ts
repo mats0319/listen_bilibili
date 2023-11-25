@@ -7,9 +7,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/home.vue"),
         children: [
             {
-                path: "/listen-bilibili",
-                name: "ListenBilibili",
-                component: () => import("@/views/listen_bilibili.vue"),
+                path: "/listen",
+                name: "listen",
+                component: () => import("@/views/listen.vue"),
+            },
+            {
+                path: "/modify",
+                name: "modify",
+                component: () => import("@/views/modify.vue"),
             }
         ]
     },

@@ -1,11 +1,13 @@
 $path = Get-Location
 
 Set-Location $PSScriptRoot
+    # make sure web code exist
     if (!(Test-Path "./ui/dist")) {
         Write-Output "please build web code first"
         return
     }
 
+    # mkdir output dir
     if (Test-Path "./listen") {
         Remove-Item "./listen/*" -Recurse
     } else {
@@ -19,7 +21,7 @@ Set-Location $PSScriptRoot
     Copy-Item "list.yaml" -Destination "./listen/list.yaml"
 
     # user manual
-    Copy-Item "README.md" -Destination "./listen/README.md"
+    Copy-Item "README.md" -Destination "./listen/manual.md"
 
     # web code
     mkdir "./listen/ui"

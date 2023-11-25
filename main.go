@@ -1,43 +1,30 @@
 package main
 
 import (
-	"flag"
-	"github.com/mats9693/listenBilibili/go"
+	"github.com/mats9693/listen_bilibili/go"
 	"net/http"
-	"os"
 	"os/exec"
 )
 
-var (
-	help     bool
-	listFile string
-)
+func main() {
+	initList()
 
-func init() {
-	flag.BoolVar(&help, "h", false, "this help")
-	flag.StringVar(&listFile, "l", "./list.yaml", "list file")
+	openWebpage()
 
-	flag.Parse()
-
-	if help {
-		lb.FlagPrintDefaults()
-		os.Exit(0)
+	err := http.ListenAndServe(":9693", lb.GetHandler())
+	if err != nil {
+		lb.Println("listen and serve failed, error: ", err)
 	}
 }
 
-func main() {
-	err := lb.LoadList(listFile)
+func initList() {
+	err := lb.ReadList()
 	if err != nil {
 		lb.Println("load list failed, error: ", err)
 		return
 	}
 
-	openWebpage()
-
-	err = http.ListenAndServe(":9693", lb.GetHandler())
-	if err != nil {
-		lb.Println("listen and serve failed, error: ", err)
-	}
+	lb.Println("> Init List Finished.")
 }
 
 func openWebpage() {
