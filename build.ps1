@@ -15,6 +15,7 @@ Set-Location $PSScriptRoot
     }
 
     # binary executable file
+    go generate
     go build -o "listen_bilibili.exe"
 
     Move-Item "listen_bilibili.exe" -Destination "./listen/listen_bilibili.exe"

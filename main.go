@@ -6,6 +6,7 @@ import (
 	"os/exec"
 )
 
+//go:generate goversioninfo
 func main() {
 	initList()
 

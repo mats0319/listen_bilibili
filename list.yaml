@@ -173,6 +173,11 @@ playlists:
           bv: https://www.bilibili.com/video/BV19c411M7Av?p=7
           description: ""
           volume: 0
+        - id: eac6b2f4-7093-464f-9c23-11a867e0f5e2
+          name: 云烟成雨
+          bv: https://www.bilibili.com/video/BV13r4y137Tc
+          description: ""
+          volume: 0
     - id: 0bc65299-7f9e-4907-ade5-ce90869f064b
       name: history
       description: ""
@@ -212,3 +217,23 @@ playlists:
           bv: https://www.bilibili.com/video/BV16N411b7wy
           description: ""
           volume: -10
+        - id: fd3bff9a-8954-4524-9598-04d0898bb47f
+          name: 眉间雪
+          bv: https://www.bilibili.com/video/BV1Pw411F71n
+          description: ""
+          volume: 0
+        - id: 8cedf889-ef39-4671-b84a-7bdfba5a7d4c
+          name: 红豆
+          bv: https://www.bilibili.com/video/BV1ec41157Je
+          description: ""
+          volume: 0
+        - id: 70f01de7-3b6b-4168-a364-27ccfef43468
+          name: 背叛
+          bv: https://www.bilibili.com/video/BV1Sc411B7r1
+          description: ""
+          volume: -10
+        - id: 1d50a50c-3d3c-4392-aa7a-23720d6b6a5e
+          name: 以父之名
+          bv: https://www.bilibili.com/video/BV11G4y147iP
+          description: ""
+          volume: 0

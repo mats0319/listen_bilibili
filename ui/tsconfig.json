@@ -24,6 +24,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "~/*": [
+        "./*"
       ]
     },
     /* from tsconfig.node.ts */
@@ -35,6 +38,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite.config.ts"
+    "vite.config.ts",
+    "package.json", // for import and get 'version'
   ]
 }
