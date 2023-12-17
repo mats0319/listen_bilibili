@@ -36,6 +36,7 @@ export class GetOriginURLReq {
 
 export class GetOriginURLRes {
     url: string = "";
+    name: string = "";
     volume: number = 0;
     err: string = "";
 }

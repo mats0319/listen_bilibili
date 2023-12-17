@@ -38,6 +38,7 @@ type GetOriginURLReq struct {
 
 type GetOriginURLRes struct {
 	URL    string `json:"url"`
+	Name   string `json:"name"`
 	Volume int32  `json:"volume"`
 	Err    string `json:"err"`
 }

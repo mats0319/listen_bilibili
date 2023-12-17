@@ -12,8 +12,8 @@
           :value="item.music_list"
         />
       </el-select>
-      当前列表包含歌曲数量&#58;&nbsp;{{ listStore.playlist.length }}
-      <el-button type="info" plain @click="listStore.getList(true)">重新加载歌单</el-button>
+      当前列表包含歌曲数量&#58;&nbsp;{{ listStore.currentMusicList.length }}
+      <el-button plain type="info" @click="listStore.getList(true)">重新加载歌单</el-button>
     </div>
 
     <div class="ht-code">
@@ -25,7 +25,7 @@
   <div class="home-content">
     <div class="hc-left">
       <p class="hcl-item" @click="link('listen')">Listen</p>
-      <p class="hcl-item" @click="link('modify')">Modify List</p>
+      <p class="hcl-item" @click="link('modifyMusic')">Modify Music</p>
     </div>
 
     <el-divider class="hc-divider" direction="vertical"/>
@@ -36,41 +36,48 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
-import { Music } from "@/axios/list.go.ts";
+import { onMounted, ref } from "vue";
 import { useListStore } from "@/pinia/list.ts";
+import { log } from "@/ts/log.ts";
+import { Music } from "@/axios/list.go.ts";
 
-const router = useRouter()
+const router = useRouter();
 const listStore = useListStore();
 
-let playlistName = ref<string>("")
+let playlistName = ref<string>("");
 
 onMounted(() => {
-    if (!(listStore.list.playlists?.length && listStore.list.playlists.length > 0)) {
+    if (!(listStore.list.playlists && listStore.list.playlists.length > 0)) {
         listStore.getList()
     }
 })
 
 function onChangePlaylist(value: Array<Music>): void {
-    listStore.playlist = value
+    // 虽然这里没有直接修改store.list，但结合v-for部分，value本质上就是store.list.playlists[index]，
+    // 所以后续在store.list和store.currentMusicList上的修改实际上都是互通的
+    listStore.currentMusicList = value;
 }
 
 function link(name: string) {
-    router.push({ name: name })
+    try {
+        router.push({ name: name });
+    } catch (e) {
+        log.fail("router link failed", e);
+    }
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .home-top {
   display: flex;
   height: 10rem;
   background-color: lightgray;
+  text-align: center;
 
   .ht-title {
     width: 20vw;
-    padding-left: 5vw;
 
     line-height: 10rem;
     font-size: 3rem;
@@ -82,7 +89,7 @@ function link(name: string) {
 
   .ht-content {
     line-height: 10rem;
-    width: 55vw;
+    width: 60vw;
     font-size: 1.6rem;
 
     .el-select {

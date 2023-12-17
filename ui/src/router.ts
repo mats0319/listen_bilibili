@@ -12,9 +12,9 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import("@/views/listen.vue"),
             },
             {
-                path: "/modify",
-                name: "modify",
-                component: () => import("@/views/modify.vue"),
+                path: "/modify-music",
+                name: "modifyMusic",
+                component: () => import("@/views/modify_music.vue"),
             }
         ]
     },

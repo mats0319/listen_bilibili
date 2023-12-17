@@ -2,8 +2,7 @@
 
 ## recommend
 
-- node 16
+- node 18
 - cnpm
-- vite 4.4.1
-- vue3
-- ts
+- vite 4
+- vue3 / ts / less

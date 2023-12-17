@@ -1,6 +1,6 @@
 <template>
   <div class="listen-content">
-    <el-table :data="listStore.playlist" max-height="70vh" stripe highlight-current-row>
+    <el-table :data="listStore.currentMusicList" max-height="70vh" stripe highlight-current-row>
       <el-table-column type="expand">
         <template #default="item">
           <el-descriptions title="Music Details" :column="1" size="small" border>
@@ -27,14 +27,14 @@
     <div class="lc-control">
       <div class="lcc-item">
         <el-input-number v-model="baseVolume" :min="0" :max="1" :step="0.05"/>
-        <el-button class="lcci-marginHorizontal" type="info" plain @click="setVideoVolume">设置基础音量</el-button>
+        <el-button class="lcci-marginHorizontal" type="info" plain @click="setVideoVolume">应用基础音量修改</el-button>
       </div>
 
-      <div class="lcc-item">正在播放&#58;&nbsp;{{ listStore.musicName }}</div>
+      <div class="lcc-item">正在播放&#58;&nbsp;{{ currentMusicName }}</div>
 
-      <div class="lcc-item">{{ volumeStr }}</div>
+      <div class="lcc-item">当前音量&#58;&nbsp;{{ volume }}</div>
 
-      <video id="listenBilibili" width="450" height="245" controls autoplay>
+      <video id="listen-bilibili" width="450" height="245" controls autoplay>
         <source type="video/mp4" src="">
       </video>
     </div>
@@ -42,46 +42,51 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue"
+import { ref, onMounted } from "vue"
 import { useListStore } from "@/pinia/list.ts";
 
 const listStore = useListStore()
 
 let baseVolume = ref<number>(0.35)
-let volume = ref<number>(0.35)
+let volume = ref<number>(0.35) // final volume, base volume + volume offset of each music
+
+let currentMusicName = ref<string>("");
+let currentMusicVolumeOffset = ref<number>(0);
 
 onMounted(() => {
     // play next music when current one is finished
-    (document.getElementById("listenBilibili") as HTMLVideoElement).onended = (_: Event): any => {
-        listStore.playNextMusic()
+    (document.getElementById("listen-bilibili") as HTMLVideoElement).onended = (_: Event): any => {
+        playMusic()
     };
+
+    // del 'onended' event
+    window.addEventListener("beforeunload", () => {
+        (document.getElementById("listen-bilibili") as HTMLVideoElement).onended = () => {}
+    })
 })
 
-function playMusic(id: string): void {
-    listStore.musicID = id
-    listStore.getOriginURL()
+function playMusic(musicID: string = ""): void {
+    listStore.playMusic(musicID, (url: string, name: string, volumeOffset: number) => {
+        currentMusicName.value = name;
+        currentMusicVolumeOffset.value = volumeOffset;
+
+        // play new music
+        (document.getElementById("listen-bilibili") as HTMLVideoElement).src = url;
+        setVideoVolume();
+        (document.getElementById("listen-bilibili") as HTMLVideoElement).play();
+    });
 }
 
 function setVideoVolume(): void {
-    volume.value = baseVolume.value + listStore.volume;
+    volume.value = baseVolume.value + currentMusicVolumeOffset.value;
     if (volume.value < 0) {
         volume.value = 0
     } else if (volume.value > 1) {
         volume.value = 1
     }
 
-    (document.getElementById("listenBilibili") as HTMLVideoElement).volume = volume.value
+    (document.getElementById("listen-bilibili") as HTMLVideoElement).volume = volume.value
 }
-
-const volumeStr = computed<string>(() => {
-    return "当前音量：" + volume.value.toString()
-})
-
-watch(() => listStore.originURL, (newValue: string) => {
-    (document.getElementById("listenBilibili") as HTMLVideoElement).src = newValue;
-    setVideoVolume();
-    (document.getElementById("listenBilibili") as HTMLVideoElement).play();
-})
 </script>
 
 <style scoped lang="less">

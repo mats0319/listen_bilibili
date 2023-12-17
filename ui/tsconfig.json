@@ -31,7 +31,9 @@
     },
     /* from tsconfig.node.ts */
     "composite": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // 
+    "incremental": false,
   },
   "include": [
     "src/**/*.ts",

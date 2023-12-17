@@ -42,13 +42,19 @@ func (h *Handler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	// log req, todo: try to print req params?
-	Printf("> Receive new request. uri: %s\n", request.RequestURI)
+	_ = request.ParseMultipartForm(32 << 20) // 32 MB
+	params := request.PostForm.Encode()
+	if len(params) > 1024 {
+		params = "too lang"
+	}
+
+	// log req
+	Printf("> Receive new request. uri: %s, params: %s\n", request.RequestURI, params)
 
 	// invoke handleFunc func
 	var res []byte
 	handlerFuncIns, ok := h.handlerFuncs[request.RequestURI]
-	if !ok { // unknown uri, regard as web source, list 'xxx.js'
+	if !ok { // unknown uri, regard as web source, like 'xxx.js'
 		dir, _ := os.Getwd()
 		path := dir + "/ui/dist" + request.RequestURI
 		if request.RequestURI == "/" { // bind html file

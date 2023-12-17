@@ -15,13 +15,21 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 
 	musicID := req.PostFormValue("music_id")
 
-	url, volume, err := getOriginURL(musicID)
+	musicItem := getMusic(musicID)
+	if len(musicItem.ID) < 1 {
+		Println("unmatched music id: ", musicID)
+		res.Err = "unmatched music id: " + musicID
+		return nil, errors.New("unmatched music id: " + musicID)
+	}
+
+	url, err := getOriginURL(musicItem.Bv)
 	if err != nil {
 		Println("get origin url failed")
 		res.Err = err.Error()
 	} else {
 		res.URL = url
-		res.Volume = volume
+		res.Name = musicItem.Name
+		res.Volume = musicItem.Volume
 	}
 
 	resBytes, err := json.Marshal(res)
@@ -34,33 +42,9 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 	return resBytes, nil
 }
 
-func getOriginURL(musicID string) (string, int32, error) {
-	bv, volume := getBvAndVolume(musicID)
-	if len(bv) < 1 {
-		Println("unmatched music id: ", musicID)
-		return "", 0, errors.New("unmatched music id: " + musicID)
-	}
-
-	data, err := getHTML(bv)
-	if err != nil {
-		Println("get html failed: ", err)
-		return "", 0, err
-	}
-
-	// get 'origin url' use RE
-	originURL := matchOriginURL(data)
-	if len(originURL) < 1 {
-		Println("RE match failed")
-		return "", 0, errors.New("RE match failed")
-	}
-
-	return originURL, volume, nil
-}
-
-// getBvAndVolume return 'bv' according 'music id', return empty string if not matched
-func getBvAndVolume(musicID string) (string, int32) {
-	bv := ""
-	var volume int32
+// getMusic return 'Music' according 'music id', return empty structure if not matched
+func getMusic(musicID string) *api.Music {
+	res := &api.Music{}
 
 ALL:
 	for i := range list.Playlists {
@@ -70,14 +54,30 @@ ALL:
 			musicItem := playlistItem.MusicList[j]
 
 			if musicItem.ID == musicID {
-				bv = musicItem.Bv
-				volume = musicItem.Volume
+				res = &musicItem
 				break ALL
 			}
 		}
 	}
 
-	return bv, volume
+	return res
+}
+
+func getOriginURL(bv string) (string, error) {
+	data, err := getHTML(bv)
+	if err != nil {
+		Println("get html failed: ", err)
+		return "", err
+	}
+
+	// get 'origin url' use RE
+	originURL := matchOriginURL(data)
+	if len(originURL) < 1 {
+		Println("RE match failed")
+		return "", errors.New("RE match failed")
+	}
+
+	return originURL, nil
 }
 
 // getHTML simulate mobile invoke, get HTML file, 'origin url' is in it
