@@ -1,39 +1,38 @@
 <template>
-  <div class="home-top">
-    <div class="ht-title" @click="link('home')">Listen Bilibili</div>
+    <div class="home-top">
+        <div class="ht-title" @click="link('home')">Listen Bilibili</div>
 
-    <div class="ht-content">
-      选择播放列表&#58;&nbsp;
-      <el-select v-model="playlistName" placeholder="请选择播放列表" @change="onChangePlaylist">
-        <el-option
-          v-for="item in listStore.list.playlists"
-          :key="item.id"
-          :label="item.name"
-          :value="item.music_list"
-        />
-      </el-select>
-      当前列表包含歌曲数量&#58;&nbsp;{{ listStore.currentMusicList.length }}
-      <el-button plain type="info" @click="listStore.getList(true)">重新加载歌单</el-button>
+        <div class="ht-content">
+            选择播放列表&#58;&nbsp;
+            <el-select v-model="playlistName" placeholder="请选择播放列表" @change="onChangePlaylist">
+                <el-option
+                    v-for="item in listStore.list.playlists"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.music_list"
+                />
+            </el-select>
+            当前列表包含歌曲数量&#58;&nbsp;{{ listStore.currentMusicList.length }}
+            <el-button plain type="info" @click="listStore.getList(true)">重新加载歌单</el-button>
+        </div>
+
+        <div class="ht-code">
+            <a href="https://github.com/mats9693/listenBilibili" target="_blank">Github</a>
+        </div>
     </div>
 
-    <div class="ht-code">
-      <a href="https://github.com/mats9693/listenBilibili" target="_blank">Github</a>
+    <div class="home-content">
+        <div class="hc-left">
+            <p class="hcl-item" @click="link('listen')">Listen</p>
+            <p class="hcl-item" @click="link('modifyMusic')">Modify Music</p>
+        </div>
+
+        <el-divider class="hc-divider" direction="vertical" />
+
+        <div class="hc-right">
+            <router-view />
+        </div>
     </div>
-
-  </div>
-
-  <div class="home-content">
-    <div class="hc-left">
-      <p class="hcl-item" @click="link('listen')">Listen</p>
-      <p class="hcl-item" @click="link('modifyMusic')">Modify Music</p>
-    </div>
-
-    <el-divider class="hc-divider" direction="vertical"/>
-
-    <div class="hc-right">
-      <router-view/>
-    </div>
-  </div>
 </template>
 
 <script lang="ts" setup>
@@ -50,9 +49,9 @@ let playlistName = ref<string>("");
 
 onMounted(() => {
     if (!(listStore.list.playlists && listStore.list.playlists.length > 0)) {
-        listStore.getList()
+        listStore.getList();
     }
-})
+});
 
 function onChangePlaylist(value: Array<Music>): void {
     // 虽然这里没有直接修改store.list，但结合v-for部分，value本质上就是store.list.playlists[index]，

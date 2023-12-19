@@ -6,5 +6,5 @@ export function deepCopy<T extends object>(obj: T): T {
         res[key] = obj[key];
     }
 
-    return res
+    return res;
 }

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -15,12 +15,12 @@ const routes: Array<RouteRecordRaw> = [
                 path: "/modify-music",
                 name: "modifyMusic",
                 component: () => import("@/views/modify_music.vue"),
-            }
-        ]
+            },
+        ],
     },
-]
+];
 
 export const router = createRouter({
     history: createWebHashHistory(),
     routes: routes,
-})
+});

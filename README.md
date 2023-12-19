@@ -39,7 +39,6 @@ A tool for listening music, use Bilibili source.
 
 ## todo
 
-- 前端引入eslint、prettier
 - 前端实现功能：（统一使用modify list接口，考虑在每次执行修改后自动保存，思考新的备份规则）
     - 播放列表内歌曲排序（拟拖动排序），现在还只能通过修改list文件的方式改变歌曲排序
     - 操作播放列表（新增、删除）
