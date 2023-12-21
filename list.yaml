@@ -1,186 +1,100 @@
 playlists:
     - id: 10dfa469-e91e-4a4d-aaee-31202bba7fcb
-      name: mario
-      description: ""
+      name: mario 1
+      description: 第一歌单，整首歌都喜欢（80+，没有不喜欢的地方）
       music_list:
         - id: 77885ca7-7af6-4823-9e90-7ff075fdbd48
           name: 春三月
           bv: https://www.bilibili.com/video/BV1r64y1S7iS
-          description: ""
-          volume: 10
-        - id: bfb375ea-f10e-432d-8d9d-a28dd6098348
-          name: 风过谢桃花
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=30
-          description: ""
-          volume: -10
-        - id: 09402b59-7503-4871-bbd0-7afb53855c8b
-          name: 花与剑
-          bv: https://www.bilibili.com/video/BV1hL41127Qf
-          description: ""
-          volume: -10
-        - id: c675bc87-a25d-4313-87df-f1de3a78f4c4
-          name: 不负人间
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=19
-          description: ""
+          description: 歌词很美，唱着温温柔柔的，和词风很搭
+          volume: 15
+        - id: c887dd96-61a5-4810-90c7-0977b9396289
+          name: 人世间
+          bv: https://www.bilibili.com/video/BV1nT4y1D7A9
+          description: 唐恬作词
           volume: -5
-        - id: 705e145f-547f-47eb-a6c4-2bbc91464193
-          name: 叹云兮
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=72
-          description: ""
-          volume: 0
-        - id: 085f5829-86dd-4e7c-9223-976eb726bded
-          name: 卜卦
-          bv: https://www.bilibili.com/video/BV1Cw411z7Q5
-          description: ""
-          volume: -10
-        - id: 86cc0f36-d441-40b7-ae93-4dddb1370876
-          name: 晚风作酒
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=12
-          description: ""
-          volume: -10
-        - id: 4d882ca0-5ad6-4d1c-b8d7-13f518575ec3
-          name: 万疆
-          bv: https://www.bilibili.com/video/BV1Gq4y1Z75X
-          description: ""
-          volume: -5
-        - id: c2a8b613-91d1-406d-9cca-e988895c2b2f
-          name: 冬眠
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=27
-          description: ""
-          volume: 0
-        - id: f71a95c7-3a68-4131-b3e3-4f89e3676641
-          name: 流光记
-          bv: https://www.bilibili.com/video/BV1SW411m7Tf
-          description: ""
-          volume: 5
-        - id: 21f8f2f9-3254-48f0-b64b-bcdc8026701b
-          name: 眉南边
-          bv: https://www.bilibili.com/video/BV1hu411v78W
-          description: ""
-          volume: -10
-        - id: d9704b6d-bd62-48c0-a39c-911b46b77867
-          name: 动物世界
-          bv: https://www.bilibili.com/video/BV1uK411S7ka
-          description: ""
-          volume: 0
-        - id: ef39743d-e2b8-4cad-a749-fa1b2656c64b
-          name: 旧梦一场
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=43
-          description: ""
-          volume: 0
-        - id: fc1da83d-3cff-405d-86cb-bf022097169b
-          name: 其实都没有
-          bv: https://www.bilibili.com/video/BV1YQ4y1H7w7
-          description: ""
-          volume: 0
-        - id: c0229547-f128-4b68-90ef-9864244fa29b
-          name: 慕夏
-          bv: https://www.bilibili.com/video/BV1et4y1Q78S
-          description: ""
-          volume: 0
-        - id: 99b0a2c1-ef90-465a-8fe7-b93438564af8
-          name: 你若三冬
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=55
-          description: ""
-          volume: 0
-        - id: e226d0be-86e9-4bdd-afc8-d1f494614e5b
-          name: 诀爱
-          bv: https://www.bilibili.com/video/BV1gx4y1A7pn
-          description: ""
-          volume: 0
         - id: d88e9ac3-333c-4d30-8d02-9fd60d444e70
           name: 人间烟火
           bv: https://www.bilibili.com/video/BV1eS4y1U71j
-          description: ""
+          description: 歌词有意境，曲子和演唱也符合这种意境
           volume: 0
-        - id: 3e714a9c-3433-4ff8-a13c-6188fbcc99d8
-          name: 沈园外
-          bv: https://www.bilibili.com/video/BV1GP411r755
-          description: ""
+        - id: 71a67ed6-5da7-4b92-9ed1-8001e232b9e0
+          name: 吹梦到西洲
+          bv: https://www.bilibili.com/video/BV15h4y1A7BN
+          description: 歌词有意境，曲子和演唱也符合这种意境
           volume: 0
-        - id: f49b5dd1-485a-477b-9ad5-648bc57cfeba
-          name: 年少有为
-          bv: https://www.bilibili.com/video/BV1qc411f77G
-          description: ""
-          volume: 0
-        - id: d5af10b3-d202-4c95-abcd-4d0a799d590a
-          name: 余情未了
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=92
-          description: ""
-          volume: -10
-        - id: ee8a2b62-e14c-4bd4-ac19-f1672e604765
-          name: 云水谣
-          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=96
-          description: ""
+        - id: 4d882ca0-5ad6-4d1c-b8d7-13f518575ec3
+          name: 万疆
+          bv: https://www.bilibili.com/video/BV1Gq4y1Z75X
+          description: 好听的爱国歌曲
           volume: 0
         - id: 690ea854-4c08-4daa-8000-7e2edd58fb3f
           name: 体面
           bv: https://www.bilibili.com/video/BV11k4y1L7Vp
           description: 唐恬作词
           volume: 0
+        - id: 8a8996fe-475a-4dd9-bae9-c52570c574fa
+          name: 句号
+          bv: https://www.bilibili.com/video/BV1cC4y1g7JB
+          description: 听着舒服，歌词也很好
+          volume: -5
         - id: ba94a556-90e4-4b74-a686-939939071571
           name: 如愿
           bv: https://www.bilibili.com/video/BV1Yq4y1r7t1
           description: 唐恬作词
-          volume: 10
-        - id: 39257598-360c-47fe-bb79-920ae039d45c
-          name: 笼
-          bv: https://www.bilibili.com/video/BV1gu411b7iF
-          description: 唐恬作词
+          volume: 5
+        - id: 6c4a1252-a5e0-4303-bdb3-2324b2517588
+          name: 可能
+          bv: https://www.bilibili.com/video/BV1vg4y1E7JK
+          description: 听着舒服，歌词也很好
           volume: 0
-        - id: 71a67ed6-5da7-4b92-9ed1-8001e232b9e0
-          name: 吹梦到西洲
-          bv: https://www.bilibili.com/video/BV15h4y1A7BN
-          description: ""
-          volume: 0
+        - id: d9704b6d-bd62-48c0-a39c-911b46b77867
+          name: 动物世界
+          bv: https://www.bilibili.com/video/BV1uK411S7ka
+          description: 听着舒服，喜欢其中几段歌词
+          volume: -5
         - id: 0b2920c1-6e30-4991-bed1-f85c99c13432
           name: 一直很安静
           bv: https://www.bilibili.com/video/BV1WX4y1R74f
-          description: ""
+          description: 仙剑音乐，音乐本身好听，还有故事情怀加持
           volume: 0
-        - id: 6fb8d7bd-48db-4bb2-b53b-77b206d54b10
-          name: 可惜没如果
-          bv: https://www.bilibili.com/video/BV1sw411v7YQ
-          description: ""
+        - id: bfb375ea-f10e-432d-8d9d-a28dd6098348
+          name: 风过谢桃花
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=30
+          description: 听着舒服，歌词也还行
           volume: -5
-        - id: 736f7686-c9e2-4f8b-ab59-a30157eba3cc
-          name: 明天，你好
-          bv: https://www.bilibili.com/video/BV13v411s7hw
-          description: ""
-          volume: 0
         - id: 0e35564d-14d0-4181-b310-9017f095046c
           name: 风的视线
           bv: https://www.bilibili.com/video/BV17u411Z7e9
-          description: pgr
-          volume: -5
+          description: PGR
+          volume: 0
         - id: 56bf7350-c75f-4f41-b6f1-59ce7b98c718
           name: 盘旋
           bv: https://www.bilibili.com/video/BV1h64y1h7Um
-          description: pgr
-          volume: -5
-        - id: 0916da94-7e22-476b-bdfa-cf98a4bd567a
-          name: 烟笼长安
-          bv: https://www.bilibili.com/video/BV1FM4y1m7h2
-          description: ""
-          volume: 0
-        - id: b153eb90-bc4e-414f-bd70-bdabcc3c09dc
-          name: 山丘
-          bv: https://www.bilibili.com/video/BV1Aa4y1N7P8
-          description: ""
+          description: PGR
           volume: 0
         - id: 16221900-7693-4d46-a0f4-8ba02bf85a98
           name: 给自己的歌
           bv: https://www.bilibili.com/video/BV19c411M7Av?p=7
-          description: ""
+          description: 歌词
           volume: 0
-        - id: eac6b2f4-7093-464f-9c23-11a867e0f5e2
-          name: 云烟成雨
-          bv: https://www.bilibili.com/video/BV13r4y137Tc
-          description: ""
+        - id: b153eb90-bc4e-414f-bd70-bdabcc3c09dc
+          name: 山丘
+          bv: https://www.bilibili.com/video/BV1Aa4y1N7P8
+          description: 歌词
           volume: 0
+        - id: 6fb8d7bd-48db-4bb2-b53b-77b206d54b10
+          name: 可惜没如果
+          bv: https://www.bilibili.com/video/BV1sw411v7YQ
+          description: 歌词
+          volume: 0
+    - id: e1df8281-2d79-4eb9-a0b5-8518e6f4a3b6
+      name: mario 2
+      description: 第二歌单，整首歌没有不喜欢的地方（60+，没有特别不喜欢的地方）
+      music_list: []
     - id: 0bc65299-7f9e-4907-ade5-ce90869f064b
       name: history
-      description: ""
+      description: 历史歌单，不常听，或用于存放一些有优秀片段的歌曲
       music_list:
         - id: 49b5b400-2dab-44e9-95f2-ba21c2745993
           name: 送别
@@ -222,11 +136,6 @@ playlists:
           bv: https://www.bilibili.com/video/BV1Pw411F71n
           description: ""
           volume: 0
-        - id: 8cedf889-ef39-4671-b84a-7bdfba5a7d4c
-          name: 红豆
-          bv: https://www.bilibili.com/video/BV1ec41157Je
-          description: ""
-          volume: 0
         - id: 70f01de7-3b6b-4168-a364-27ccfef43468
           name: 背叛
           bv: https://www.bilibili.com/video/BV1Sc411B7r1
@@ -235,5 +144,110 @@ playlists:
         - id: 1d50a50c-3d3c-4392-aa7a-23720d6b6a5e
           name: 以父之名
           bv: https://www.bilibili.com/video/BV11G4y147iP
+          description: ""
+          volume: 0
+        - id: 085f5829-86dd-4e7c-9223-976eb726bded
+          name: 卜卦
+          bv: https://www.bilibili.com/video/BV1Cw411z7Q5
+          description: ""
+          volume: -10
+        - id: 99b0a2c1-ef90-465a-8fe7-b93438564af8
+          name: 你若三冬
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=55
+          description: ""
+          volume: 0
+        - id: ee8a2b62-e14c-4bd4-ac19-f1672e604765
+          name: 云水谣
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=96
+          description: ""
+          volume: 0
+        - id: 0916da94-7e22-476b-bdfa-cf98a4bd567a
+          name: 烟笼长安
+          bv: https://www.bilibili.com/video/BV1FM4y1m7h2
+          description: ""
+          volume: 0
+        - id: c675bc87-a25d-4313-87df-f1de3a78f4c4
+          name: 不负人间
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=19
+          description: ""
+          volume: -5
+        - id: 705e145f-547f-47eb-a6c4-2bbc91464193
+          name: 叹云兮
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=72
+          description: ""
+          volume: 0
+        - id: 86cc0f36-d441-40b7-ae93-4dddb1370876
+          name: 晚风作酒
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=12
+          description: ""
+          volume: -10
+        - id: c2a8b613-91d1-406d-9cca-e988895c2b2f
+          name: 冬眠
+          bv: https://www.bilibili.com/video/BV1ke4y1Y7Mu
+          description: ""
+          volume: 0
+        - id: f71a95c7-3a68-4131-b3e3-4f89e3676641
+          name: 流光记
+          bv: https://www.bilibili.com/video/BV1SW411m7Tf
+          description: ""
+          volume: 5
+        - id: 21f8f2f9-3254-48f0-b64b-bcdc8026701b
+          name: 眉南边
+          bv: https://www.bilibili.com/video/BV1hu411v78W
+          description: ""
+          volume: -5
+        - id: ef39743d-e2b8-4cad-a749-fa1b2656c64b
+          name: 旧梦一场
+          bv: https://www.bilibili.com/video/BV1nk4y1P79g?p=43
+          description: ""
+          volume: 0
+        - id: fc1da83d-3cff-405d-86cb-bf022097169b
+          name: 其实都没有
+          bv: https://www.bilibili.com/video/BV1YQ4y1H7w7
+          description: ""
+          volume: 0
+        - id: c0229547-f128-4b68-90ef-9864244fa29b
+          name: 慕夏
+          bv: https://www.bilibili.com/video/BV1et4y1Q78S
+          description: ""
+          volume: 0
+        - id: eac6b2f4-7093-464f-9c23-11a867e0f5e2
+          name: 云烟成雨
+          bv: https://www.bilibili.com/video/BV13r4y137Tc
+          description: ""
+          volume: 0
+        - id: 3e714a9c-3433-4ff8-a13c-6188fbcc99d8
+          name: 沈园外
+          bv: https://www.bilibili.com/video/BV1GP411r755
+          description: ""
+          volume: 0
+        - id: d5af10b3-d202-4c95-abcd-4d0a799d590a
+          name: 余情未了
+          bv: https://www.bilibili.com/video/BV1oP411w7td
+          description: ""
+          volume: -10
+        - id: f49b5dd1-485a-477b-9ad5-648bc57cfeba
+          name: 年少有为
+          bv: https://www.bilibili.com/video/BV1qc411f77G
+          description: 歌词
+          volume: 0
+        - id: 39257598-360c-47fe-bb79-920ae039d45c
+          name: 笼
+          bv: https://www.bilibili.com/video/BV1gu411b7iF
+          description: 唐恬作词
+          volume: 0
+        - id: 736f7686-c9e2-4f8b-ab59-a30157eba3cc
+          name: 明天，你好
+          bv: https://www.bilibili.com/video/BV13v411s7hw
+          description: ""
+          volume: 0
+        - id: 09402b59-7503-4871-bbd0-7afb53855c8b
+          name: 花与剑
+          bv: https://www.bilibili.com/video/BV1hL41127Qf
+          description: 仙剑音乐，本身好听还有故事情怀加持
+          volume: 0
+        - id: 8cedf889-ef39-4671-b84a-7bdfba5a7d4c
+          name: 红豆
+          bv: https://www.bilibili.com/video/BV1ec41157Je
           description: ""
           volume: 0
