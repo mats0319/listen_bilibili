@@ -2,7 +2,7 @@
 
 ## recommend
 
--   node 18
+-   node 22
 -   pnpm
 -   vite 4
 -   vue3 / ts / less

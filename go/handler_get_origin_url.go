@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"regexp"
+	"strings"
 )
 
 // onGetOriginURL according to 'music id', match 'bv' and use 'bv' to get 'origin address'
@@ -26,6 +27,7 @@ func onGetOriginURL(req *http.Request) ([]byte, error) {
 	if err != nil {
 		Println("get origin url failed")
 		res.Err = err.Error()
+		return nil, err
 	} else {
 		res.URL = url
 		res.Name = musicItem.Name
@@ -109,13 +111,17 @@ func getHTML(bv string) ([]byte, error) {
 	return body, nil
 }
 
+// data structure:
+//
+//	"playUrlInfo": [{ ... "url": "https:\u002f\u002f..." ... }]
+//	want: https://...
 func matchOriginURL(data []byte) string {
-	reRule := regexp.MustCompile(`"readyVideoUrl":\s*"([^"]*)"`)
+	reRule := regexp.MustCompile(`"playUrlInfo":\s*\[\{.*"url":\s*"([^"]*)",`)
 	result := reRule.FindAllSubmatch(data, -1)
 	if len(result) < 1 || len(result[0]) < 2 {
 		Println("RE match failed.")
 		return ""
 	}
 
-	return string(result[0][1])
+	return strings.ReplaceAll(string(result[0][1]), `\u002F`, "/")
 }

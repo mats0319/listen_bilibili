@@ -9,8 +9,8 @@ A tool for listening music, use Bilibili source.
 
 推荐环境：（项目开发期间使用以下环境）
 
-1. node：18
-2. go：1.21
+1. node：22
+2. go：1.23
 3. 浏览器：chrome
 
 编译：
